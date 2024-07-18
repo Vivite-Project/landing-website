@@ -6,6 +6,7 @@ Landing page of the Vivite Website
 -Docker compose (Production)
 
 ## Installation
+Remove .example files and use:
 ```
 yarn install
 ```
