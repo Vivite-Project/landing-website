@@ -1,0 +1,9 @@
+services: 
+  landing-app:
+    container_name: landing-app
+    build: .
+    restart: always
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 80:80
