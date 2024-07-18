@@ -2,16 +2,16 @@
 Landing page of the Vivite Website
 
 ## Dependencies
--Yarn
+-Yarn\
 -Docker compose (Production)
 
 ## Installation
-```bash
+```
 yarn install
 ```
 
 ## Usage
-```bash
+```
 #Development
 docker compose up --build
 
