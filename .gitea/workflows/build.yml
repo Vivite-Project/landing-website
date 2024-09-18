@@ -1,0 +1,25 @@
+name: Rebuild and Restart Docker Container
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: [self-hosted]
+    steps:
+      - name: Access the repository
+        run: cd ~/landing
+
+      - name: Pull origin main
+        run: git pull origin master
+
+      - name: Stop the running containers
+        run: docker compose stop
+
+      - name: Build the containers
+        run: docker compose build
+
+      - name: Restart the containers
+        run: docker compose up -d
