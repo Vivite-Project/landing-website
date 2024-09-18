@@ -10,7 +10,7 @@ jobs:
     runs-on: [build]
     steps:
       - name: Access the repository
-        run: cd ~/landing
+        run: cd /home/vivite/landing
 
       - name: Pull origin main
         run: git pull origin master
