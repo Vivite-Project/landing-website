@@ -1,21 +1,66 @@
-# Vivite Landing
-Landing page of the Vivite Website
+# Vivite Project: Landing Page
 
-## Dependencies
--Yarn\
--Docker compose (Production)
+The Vivite Project Landing page, accessible at www.vivite.fr, serves as the
+central hub for all applications hosted on the Vivite server. Designed with a
+sleek, modern aesthetic, the page features a smooth and subtle light animation
+that adds a sense of fluidity and professionalism to the user experience. This
+animation is not only visually appealing but also sets the tone for the
+innovative and dynamic projects hosted within the Vivite ecosystem.
 
-## Installation
-Remove .example files and use:
-```
-yarn install
+As the main portal to various applications, the landing page ensures seamless
+navigation and acts as a gateway to Vivite’s diverse digital offerings. The
+clean, minimalistic design prioritizes user accessibility, making it easy for
+visitors to find and explore the different services and platforms available.
+Each application hosted on the server can be reached through intuitive and
+responsive elements, offering users a centralized and organized entry point.
+Whether it's web apps, tools, or future projects, the Vivite landing page ties
+everything together in one cohesive interface.
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone git@githubcom:AxelViviteViviteProject-Landing.git
 ```
 
-## Usage
-```
-#Development
-docker compose up --build
+Go to the project directory
 
-#Production
-docker compose -f "compose.prod.yml" up --build
+```bash
+  cd ViviteProject-Landing
 ```
+
+Install dependencies
+
+```bash
+  yarn install
+```
+
+Start the server
+
+```bash
+  yarn run preview
+```
+
+## Roadmap
+
+- Add DarkMode toggle
+
+- Add the server application links
+
+- Link the configuration to the Strapi serveur application
+
+- Maybe switch to NextJS
+
+## Tech Stack
+
+**Client:** React, Typescript, ViteJS, AcernityUI, TailwindCSS
+
+## Authors
+
+- [Axel Virot](https://www.github.com/AxelVivite)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for
+details
