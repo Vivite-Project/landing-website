@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted]
+    runs-on: [build]
     steps:
       - name: Access the repository
         run: cd ~/landing
