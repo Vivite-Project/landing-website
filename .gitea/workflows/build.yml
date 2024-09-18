@@ -13,7 +13,7 @@ jobs:
         run: cd /home/vivite/landing
 
       - name: Pull origin main
-        run: git pull origin master
+        run: git pull origin main
 
       - name: Stop the running containers
         run: docker compose stop
