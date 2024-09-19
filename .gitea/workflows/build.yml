@@ -9,17 +9,22 @@ jobs:
   build:
     runs-on: [build]
     steps:
-      - name: Access the repository
-        run: cd /home/vivite/landing
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H example.com >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Pull origin main
-        run: git pull origin main
-
-      - name: Stop the running containers
-        run: docker compose stop
-
-      - name: Build the containers
-        run: docker compose build
-
-      - name: Restart the containers
-        run: docker compose up -d
+      - name: Deploy via SSH
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_HOST }}
+          cd ${{ secrets.PROJECT_PATH }}
+          git pull origin main
+          docker-compose down
+          docker-compose up -d --build
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
