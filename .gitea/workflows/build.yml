@@ -19,5 +19,3 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           TARGET: ${{ secrets.TARGET }}
-          SCRIPT_BEFORE: "docker compose down"
-          SCRIPT_AFTER: "docker compose up --build -d"
