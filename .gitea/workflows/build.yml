@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
         
       - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
@@ -19,3 +24,6 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           TARGET: ${{ secrets.TARGET }}
+          SCRIPT_AFTER: |
+            docker compose down
+            docker compose up --build -d
