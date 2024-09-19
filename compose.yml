@@ -1,13 +1,17 @@
 services:
-  landing-app:
+  app:
+    container_name: "landing"
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
-    image: vivite-landing:staging
     environment:
       - NODE_ENV=production
     ports:
-      - 80:80
-      - 443:443
-    deploy:
-      replicas: 1
+      - 3001:3000
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

@@ -1,0 +1,5 @@
+.gitea/
+.nginx/
+.vscode/
+node_modules/
+dist/
