@@ -21,13 +21,13 @@ everything together in one cohesive interface.
 Clone the project
 
 ```bash
-  git clone git@githubcom:AxelViviteViviteProject-Landing.git
+  git clone git@github.com:Vivite-Project/landing-website.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd ViviteProject-Landing
+  cd landing-website
 ```
 
 Install dependencies
@@ -40,6 +40,14 @@ Start the server
 
 ```bash
   yarn run preview
+```
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  docker compose up -d
 ```
 
 ## Roadmap
