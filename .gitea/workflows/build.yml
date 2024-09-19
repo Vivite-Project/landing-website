@@ -9,21 +9,16 @@ jobs:
   build:
     runs-on: [build]
     steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-        env:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        
+      - name: Deploy to remote server
+        uses: easingthemes/ssh-deploy@main
+        with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy via SSH
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_HOST }}
-          cd ${{ secrets.PROJECT_PATH }}
-          git pull origin main
-          docker-compose down
-          docker-compose up -d --build
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+          ARGS: "-rlgoDzvc -i --delete"
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          TARGET: ${{ secrets.TARGET }}
+          SCRIPT_BEFORE: "docker compose down"
+          SCRIPT_AFTER: "docker compose up --build -d"
